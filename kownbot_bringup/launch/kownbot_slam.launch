@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <include file="$(find kownbot_bringup)/launch/kownbot_bringup.launch">
+       <!-- args -->
+    </include>
+    
+    <include file="$(find kownbot_navigation)/launch/gmapping_demo.launch">
+       <!-- args -->
+    </include>
+</launch>
+
