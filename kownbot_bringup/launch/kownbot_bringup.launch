@@ -47,6 +47,11 @@
 
         <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
         </node>
+        
+        <!--Launch depthimage_to_laserscan-->
+        <node name="depthimage_to_laserscan" pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" > 
+            <remap from="image" to="/camera/depth/image_raw"/>
+        </node>
 
          <!--Launch rviz-->
          <node pkg="rviz" type="rviz" name="rviz"
