@@ -29,7 +29,6 @@
 
     <group ns="$(arg robot_namespace)">
 
-
         <param name="robot_description" command="$(find xacro)/xacro '$(find kownbot_description)/urdf/kownbot.urdf.xacro'
             --inorder  mesh_enabled:=$(arg mesh_enabled)" />
 
@@ -49,13 +48,15 @@
         <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
         </node>
 
-        <node name="rviz" pkg= "rviz" type = "rviz" output="screen" />
+         <!--Launch rviz-->
+         <node pkg="rviz" type="rviz" name="rviz"
+            args="-d $(find kownbot_bringup)/rviz/display.rviz">
+         </node>
         
-          <!-- load rqt steering node -->
-  <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
-    <param name="default_topic" value="/velocity_controller/cmd_vel"/>
-  </node>
-
+         <!-- load rqt steering node -->
+         <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+           <param name="default_topic" value="/velocity_controller/cmd_vel"/>
+         </node>
     </group>
 
 </launch>
